@@ -2,6 +2,7 @@
 
 """creates a flask application"""
 from flask import Flask
+from flask_cors import CORS
 from os import getenv
 from flask import make_response
 from models import storage
@@ -9,6 +10,7 @@ from api.v1.views import app_views
 
 #creates flask application
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 app.register_blueprint(app_views)
 
 
